@@ -1,13 +1,16 @@
+"use client";
+
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function DoctorsListItem({ doctor }) {
+  const router = useRouter();
   console.log(doctor, "doctor");
   return (
     <div
       className="card card-side bg-base-100 shadow-xl mb-3 h-40"
       key={doctor.id}
     >
-      <div></div>
       <figure className="pl-3">
         <Image
           src="https://th.bing.com/th/id/OIP.qlmht6Rfwl-jbsK1f1T8AgHaHa?rs=1&pid=ImgDetMain"
@@ -41,9 +44,14 @@ export default function DoctorsListItem({ doctor }) {
           </div>
         </div>
         <p className="text-sm">{doctor.description}</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">View Details</button>
-        </div>
+      </div>
+      <div className="card-actions justify-end items-center mr-5 hidden sm:flex md:flex">
+        <button
+          className="btn btn-primary"
+          onClick={() => router.push(`doctors/${doctor.id}`)}
+        >
+          View Details
+        </button>
       </div>
     </div>
   );
