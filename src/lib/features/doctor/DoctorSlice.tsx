@@ -5,8 +5,8 @@ const initialState = {
     {
       id: 1,
       name: "Dr. Jane Smith",
-      specialty: "Cardiology",
-      city: "NewYork",
+      specialty: "heart",
+      city: "islamabad",
       photoUrl: "https://example.com/photo.jpg",
       description: "Experienced cardiologist with 15 years of practice.",
       contactInfo: {
@@ -17,8 +17,8 @@ const initialState = {
     {
       id: 2,
       name: "Dr. Smith Jane",
-      specialty: "General Physisan",
-      city: "Lahore",
+      specialty: "kidney",
+      city: "peshawar",
       photoUrl: "https://example.com/photo.jpg",
       description: "Experienced cardiologist with 15 years of practice.",
       contactInfo: {
@@ -30,7 +30,7 @@ const initialState = {
     {
       id: 3,
       name: "Dr. Smith Jane",
-      specialty: "General Physisan",
+      specialty: "liver",
       city: "Lahore",
       photoUrl: "https://example.com/photo.jpg",
       description: "Experienced cardiologist with 15 years of practice.",
@@ -43,8 +43,8 @@ const initialState = {
     {
       id: 4,
       name: "Dr. Smith Jane",
-      specialty: "General Physisan",
-      city: "Lahore",
+      specialty: "liver",
+      city: "islamabad",
       photoUrl: "https://example.com/photo.jpg",
       description: "Experienced cardiologist with 15 years of practice.",
       contactInfo: {
@@ -73,11 +73,7 @@ const initialState = {
 const doctosSlice = createSlice({
   name: "doctorsSlice",
   initialState,
-  reducers: {
-    getDoctorsList: (state) => {
-      return state;
-    },
-  },
+  reducers: {},
 });
 
 export default doctosSlice.reducer;

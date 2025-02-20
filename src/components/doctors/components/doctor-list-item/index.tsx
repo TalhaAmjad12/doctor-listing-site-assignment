@@ -1,15 +1,38 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function DoctorsListItem({ doctor }) {
   const router = useRouter();
-  console.log(doctor, "doctor");
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 768); // Adjust breakpoint if needed
+    };
+
+    checkScreenSize(); // Initial check
+    window.addEventListener("resize", checkScreenSize); // Listen for resize
+
+    return () => window.removeEventListener("resize", checkScreenSize); // Cleanup
+  }, []);
+
+  const handleCardClick = () => {
+    if (isMobile) {
+      router.push(`doctors/${doctor.id}`);
+    }
+  };
+
   return (
     <div
-      className="card card-side bg-base-100 shadow-xl mb-3 h-40"
+      className={`card card-side bg-base-100 shadow-xl mb-3 h-40 ${
+        isMobile ? "cursor-pointer hover:bg-gray-100" : ""
+      }`}
       key={doctor.id}
+      onClick={isMobile ? handleCardClick : undefined}
     >
       <figure className="pl-3">
         <Image
@@ -23,26 +46,7 @@ export default function DoctorsListItem({ doctor }) {
         <h2 className="card-title">
           {doctor.name} - <span className="text-sm">({doctor.specialty})</span>
         </h2>
-        <div className="p-2 flex flex-row items-center justify-between w-96">
-          {" "}
-          {/* Horizontal layout */}
-          <div className="text-center">
-            <p className="text-xs">Location</p>
-            <h2 className="text-sm font-bold w-15">{doctor.city}</h2>
-          </div>
-          <div className="divider divider-horizontal"></div>{" "}
-          {/* Horizontal divider */}
-          <div className="text-center">
-            <p className="text-xs">Email</p>
-            <h2 className="text-sm font-bold">{doctor.contactInfo.email}</h2>
-          </div>
-          <div className="divider divider-horizontal"></div>{" "}
-          {/* Horizontal divider */}
-          <div className="text-center">
-            <p className="text-xs">Phone</p>
-            <h2 className="text-sm font-bold">{doctor.contactInfo.phone}</h2>
-          </div>
-        </div>
+
         <p className="text-sm">{doctor.description}</p>
       </div>
       <div className="card-actions justify-end items-center mr-5 hidden sm:flex md:flex">

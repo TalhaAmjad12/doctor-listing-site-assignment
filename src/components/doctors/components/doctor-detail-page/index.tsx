@@ -1,27 +1,16 @@
+"use client";
+
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import { useParams } from "next/navigation";
 
 export default function DoctorsDetail() {
-  return (
-    // <div className="card h-[85vh]">
-    // <figure className="mt-4 ">
-    //   <Image
-    //     src="https://th.bing.com/th/id/OIP.qlmht6Rfwl-jbsK1f1T8AgHaHa?rs=1&pid=ImgDetMain"
-    //     alt="Movie"
-    //     className="rounded-full"
-    //     height={340}
-    //     width={185}
-    //   />
-    // </figure>
+  const { id } = useParams();
 
-    //   <div className="text-center">
-    //     <p>Name</p>
-    //     <p>Address</p>
-    //     <p>specialty</p>
-    //     <p>availibility</p>
-    //     <p>contact info</p>
-    //     <p>satisfied patients</p>
-    //   </div>
-    // </div>
+  const doctorsList = useSelector((state) => state.doctor.data);
+  const currentDoctor = doctorsList.find((obj) => obj.id === Number(id));
+
+  return (
     <div className="card">
       <div className="card-body">
         <div className="flex gap-10">
@@ -35,7 +24,7 @@ export default function DoctorsDetail() {
             />
           </figure>
           <div className="mt-16">
-            <h2 className="card-title">Jamie Regel</h2>
+            <h2 className="card-title">{currentDoctor.name}</h2>
             <div className="flex items-center space-x-2">
               <span>📌📌📌📌</span>
               <span>214 rates</span>
