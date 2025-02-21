@@ -1,0 +1,123 @@
+export const DOCTORS = [
+  {
+    id: 1,
+    name: "Dr. Jane Smith",
+    specialty: "Heart",
+    city: "Islamabad",
+    photoUrl: "https://example.com/photo1.jpg",
+    description: "Experienced cardiologist with 15 years of practice.",
+    contactInfo: {
+      email: "jane.smith@example.com",
+      phone: "+123456789",
+    },
+  },
+  {
+    id: 2,
+    name: "Dr. John Doe",
+    specialty: "Neurology",
+    city: "Karachi",
+    photoUrl: "https://example.com/photo2.jpg",
+    description: "Expert in treating neurological disorders.",
+    contactInfo: {
+      email: "john.doe@example.com",
+      phone: "+987654321",
+    },
+  },
+  {
+    id: 3,
+    name: "Dr. Emily Davis",
+    specialty: "Dermatology",
+    city: "Lahore",
+    photoUrl: "https://example.com/photo3.jpg",
+    description: "Specializes in skin conditions and treatments.",
+    contactInfo: {
+      email: "emily.davis@example.com",
+      phone: "+123987654",
+    },
+  },
+  {
+    id: 4,
+    name: "Dr. Michael Lee",
+    specialty: "Pediatrics",
+    city: "Rawalpindi",
+    photoUrl: "https://example.com/photo4.jpg",
+    description: "Pediatrician with a focus on early childhood care.",
+    contactInfo: {
+      email: "michael.lee@example.com",
+      phone: "+124578963",
+    },
+  },
+  {
+    id: 5,
+    name: "Dr. Sarah Brown",
+    specialty: "Orthopedics",
+    city: "Faisalabad",
+    photoUrl: "https://example.com/photo5.jpg",
+    description: "Orthopedic surgeon specializing in joint replacements.",
+    contactInfo: {
+      email: "sarah.brown@example.com",
+      phone: "+125478951",
+    },
+  },
+  {
+    id: 6,
+    name: "Dr. David Wilson",
+    specialty: "Oncology",
+    city: "Multan",
+    photoUrl: "https://example.com/photo6.jpg",
+    description: "Oncologist dedicated to cancer care and treatment.",
+    contactInfo: {
+      email: "david.wilson@example.com",
+      phone: "+134689256",
+    },
+  },
+  {
+    id: 7,
+    name: "Dr. Olivia Martinez",
+    specialty: "Gynecology",
+    city: "Quetta",
+    photoUrl: "https://example.com/photo7.jpg",
+    description: "Specializes in women’s health and gynecological treatments.",
+    contactInfo: {
+      email: "olivia.martinez@example.com",
+      phone: "+1234567890",
+    },
+  },
+  {
+    id: 8,
+    name: "Dr. William Taylor",
+    specialty: "Psychiatry",
+    city: "Peshawar",
+    photoUrl: "https://example.com/photo8.jpg",
+    description:
+      "Psychiatrist with experience in treating mental health disorders.",
+    contactInfo: {
+      email: "william.taylor@example.com",
+      phone: "+142589633",
+    },
+  },
+  {
+    id: 9,
+    name: "Dr. Charlotte Harris",
+    specialty: "Gastroenterology",
+    city: "Sialkot",
+    photoUrl: "https://example.com/photo9.jpg",
+    description: "Gastroenterologist specializing in digestive health.",
+    contactInfo: {
+      email: "charlotte.harris@example.com",
+      phone: "+125965738",
+    },
+  },
+  {
+    id: 10,
+    name: "Dr. James Wilson",
+    specialty: "Ophthalmology",
+    city: "Islamabad",
+    photoUrl: "https://example.com/photo10.jpg",
+    description: "Ophthalmologist with expertise in eye surgeries.",
+    contactInfo: {
+      email: "james.wilson@example.com",
+      phone: "+123254687",
+    },
+  },
+];
