@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import doctosSlice from "./features/doctor/DoctorSlice";
+import doctorsSlice from "./features/doctor/DoctorSlice";
 
 export const createStore = () => {
   return configureStore({
     reducer: {
-      doctor: doctosSlice,
+      doctor: doctorsSlice,
     },
   });
 };

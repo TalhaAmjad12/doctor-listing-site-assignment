@@ -30,7 +30,7 @@ const doctosSlice = createSlice({
       })
       // When fetch fails
       .addCase(fetchDoctors.rejected, (state, action) => {
-        state.isLoading = false;
+        state.isLoading = true;
         state.error = action.error.message || "Something went wrong";
       });
   },
