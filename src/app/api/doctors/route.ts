@@ -5,7 +5,7 @@ export async function GET(req: Request) {
   const city = url.searchParams.get("city");
   const specialty = url.searchParams.get("specialty");
   const page = parseInt(url.searchParams.get("page") || "1");
-  const limit = parseInt(url.searchParams.get("limit") || "4");
+  const limit = parseInt(url.searchParams.get("limit") || "8");
 
   try {
     // Get the filtered data with pagination

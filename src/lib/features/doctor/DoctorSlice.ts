@@ -19,19 +19,32 @@ const doctosSlice = createSlice({
       .addCase(fetchDoctors.pending, (state) => {
         state.isLoading = true;
         state.error = null;
+        if (state.data) {
+          state.data = state.data.map((doctor) => ({
+            ...doctor,
+            isLoading: true,
+          }));
+        }
       })
-      // When fetch is successful
       .addCase(fetchDoctors.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.data = action.payload.doctors; // List of doctors
-        state.currentPage = action.payload.currentPage; // Current page number
-        state.totalPages = action.payload.totalPages; // Total pages
-        state.totalDoctors = action.payload.total; // Total number of doctors
+        state.data = action.payload.doctors.map((doctor) => ({
+          ...doctor,
+          isLoading: false,
+        }));
+        state.currentPage = action.payload.currentPage;
+        state.totalPages = action.payload.totalPages;
+        state.totalDoctors = action.payload.total;
       })
-      // When fetch fails
       .addCase(fetchDoctors.rejected, (state, action) => {
         state.isLoading = true;
         state.error = action.error.message || "Something went wrong";
+        if (state.data) {
+          state.data = state.data.map((doctor) => ({
+            ...doctor,
+            isLoading: false,
+          }));
+        }
       });
   },
 });

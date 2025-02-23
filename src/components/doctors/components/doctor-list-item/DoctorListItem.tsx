@@ -1,69 +1,54 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
-import { MailIcon, PhoneIcon } from "../../../../utils/icons";
+import { MailIcon, PhoneIcon, LocationIcon } from "../../../../utils/icons";
+import DoctorListItemSkeleton from "./skeleton";
 
 export default function DoctorsListItem({ doctor }) {
   const router = useRouter();
 
-  const [isMobile, setIsMobile] = useState(false);
+  const DOCTORS_INFO = [
+    { id: "1", label: () => <MailIcon />, value: doctor.contactInfo.email },
+    { id: "2", label: () => <PhoneIcon />, value: doctor.contactInfo.phone },
+    { id: "3", label: () => <LocationIcon />, value: doctor.city },
+  ];
 
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 638);
-    };
-
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, []);
-
-  const handleCardClick = () => {
-    if (isMobile) {
-      router.push(`doctors/${doctor.id}`);
-    }
-  };
+  if (doctor.isLoading) return <DoctorListItemSkeleton />;
 
   return (
     <div
-      className={`card bg-base-100 shadow-xl mb-5 ${
-        isMobile
-          ? "cursor-pointer hover:bg-gray-100 mb-5 overflow-y-nul -0 p-0l"
-          : ""
-      }`}
+      className={`card bg-base-100 shadow-xl mb-5 w-[340px]`}
       key={doctor.id}
-      onClick={isMobile ? handleCardClick : undefined}
     >
-      <figure>
+      <figure className="bg-base-200">
         <img
-          className="hidden sm:flex md:flex h-[350px]"
-          src="https://th.bing.com/th/id/OIP.qlmht6Rfwl-jbsK1f1T8AgHaHa?rs=1&pid=ImgDetMain"
+          className="h-[250px] rounded-lg mt-5 mb-5"
+          src={doctor.photoUrl}
           alt="Doctor"
         />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title">
-          {doctor.name} -
-          <div className="badge badge-secondary">{doctor.specialty}</div>
-        </h2>
-        <div className="flex items-center">
-          <MailIcon />
-          <p className="pl-2">kkk</p>
-        </div>
-        <div className="flex items-center">
-          <PhoneIcon />
-          <p className="pl-2">+9786534351</p>
+      <div className="card-body p-5">
+        <div className="card-title mt-[-17px]">
+          <h1 className="truncate w-40" data-tip={doctor.name}>
+            {doctor.name}
+          </h1>{" "}
+          <p className="badge bg-[#65FA38] text-white">{doctor.specialty}</p>
         </div>
 
-        <p>{doctor.description}</p>
-        <div className="card-actions justify-end hidden sm:flex md:flex">
+        {DOCTORS_INFO.map((info, index) => (
+          <div key={index} className="flex items-center mt-[-7px]">
+            <info.label />
+            <p className="pl-2">{info.value}</p>
+          </div>
+        ))}
+
+        <div className="card-actions">
           <button
-            className="btn btn-primary"
+            className="btn btn-sm btn-primary w-full"
             onClick={() => router.push(`doctors/${doctor.id}`)}
           >
-            View Details
+            View Information
           </button>
         </div>
       </div>
