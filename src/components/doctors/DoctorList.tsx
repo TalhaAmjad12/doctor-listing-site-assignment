@@ -3,18 +3,23 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DoctorsListItem from "./components/doctor-list-item/index";
-import { RootState, AppDispatch } from "../../lib/store";
+import { AppDispatch } from "../../lib/store";
 import { fetchDoctors } from "../../lib/features/doctor/actions";
 import { searchOptions, pagination, debounce } from "./helper";
+import {
+  getAllDoctors,
+  getTotalPages,
+  getCurrentPage,
+  isError,
+} from "../../lib/features/doctor/selectors";
 
 export default function DoctorsList() {
   const dispatch = useDispatch<AppDispatch>();
-  const {
-    data: doctorsList,
-    totalPages,
-    currentPage,
-    error,
-  } = useSelector((state: RootState) => state.doctor);
+  const doctorsList = useSelector(getAllDoctors);
+  const totalPages = useSelector(getTotalPages);
+  const currentPage = useSelector(getCurrentPage);
+  const error = useSelector(isError);
+
   const [city, setCity] = useState("");
   const [specialty, setSpecialty] = useState("");
   const [page, setPage] = useState(1);

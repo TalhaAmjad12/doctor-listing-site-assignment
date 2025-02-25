@@ -37,7 +37,7 @@ const doctosSlice = createSlice({
         state.totalDoctors = action.payload.total;
       })
       .addCase(fetchDoctors.rejected, (state, action) => {
-        state.isLoading = true;
+        state.isLoading = false;
         state.error = action.error.message || "Something went wrong";
         if (state.data) {
           state.data = state.data.map((doctor) => ({

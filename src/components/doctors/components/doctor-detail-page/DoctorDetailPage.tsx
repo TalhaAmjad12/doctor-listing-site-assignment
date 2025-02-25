@@ -2,16 +2,14 @@
 
 import { useSelector } from "react-redux";
 import { useParams } from "next/navigation";
-import { useEffect } from "react";
+import { getAllDoctors } from "../../../../lib/features/doctor/selectors";
 
 export default function DoctorsDetail() {
   const { id } = useParams();
 
-  const doctorsList = useSelector((state) => state.doctor.data);
+  const doctorsList = useSelector(getAllDoctors);
   const currentDoctor =
     doctorsList && doctorsList.find((obj) => obj.id === Number(id));
-
-  useEffect(() => {}, [currentDoctor]);
 
   return (
     <div className="card p-5 mb-5">
